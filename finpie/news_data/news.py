@@ -567,7 +567,7 @@ class NewsData(CleanNews):
 
         return data
 
-
+    
     def barrons(self, datestop = False):
 
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
