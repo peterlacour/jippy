@@ -667,7 +667,7 @@ fd.key_metrics()
 
 <div align="right"><a href="#0">Back to top</a> </div>
 
-#### <div id = "f11" ><i>Fundamentals( ticker, source, freq ).earnings\_estimates()</i></div>
+#### <div id = "f11" ><i>Fundamentals( ticker, source, freq ).earnings\_estimate()</i></div>
 
 <ul>
 <li>Returns current earnings estimates for the current quarter, next quarter, current year and the next year from Yahoo Finance.</li>
@@ -688,7 +688,7 @@ fd.key_metrics()
 
 ```python
 fd = Fundamentals('AAPL')
-fd.earnings_estimates('AAPL')
+fd.earnings_estimate('AAPL')
 ```
 
 <center><small><small>
