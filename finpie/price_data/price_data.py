@@ -43,9 +43,13 @@ from selenium.webdriver.support import expected_conditions as EC
 # from iexfinance.stocks import get_historical_intraday
 from finpie.base import DataBase
 #from base import DataBase
+import random
 
-
-
+# function that read a random line from the file the user_agents
+def rand_agent(fname):
+    lines = open(fname).read().splitlines()
+    return random.choice(lines)
+    
 def historical_prices( ticker, start = None, end = None):
     '''
 
@@ -57,9 +61,10 @@ def historical_prices( ticker, start = None, end = None):
     if end == None:
         last_close = (dt.datetime.today() ).strftime("%Y-%m-%d")
         end = int(time.mktime(time.strptime(f'{last_close} 00:00:00', '%Y-%m-%d %H:%M:%S')))
-
+    
+    headers = {'User-Agent': rand_agent('user-agents.txt')}
     url = f'https://query2.finance.yahoo.com/v7/finance/download/{ticker}?period1={start}&period2={end}&interval=1d'
-    r = requests.get(url).text
+    r = requests.get(url, headers=headers).text
     df = pd.read_csv(StringIO(r))
     df.columns = [ col.lower().replace(' ', '_') for col in df.columns ]
     df.index = pd.to_datetime(df.date, format = '%Y-%m-%d')
